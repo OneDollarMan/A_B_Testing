@@ -33,6 +33,14 @@ def main():
     start_aa_test(df_sales_np, group_a, group_b, valid_slice, ALPHA)
     start_ab_test(df_sales_np, group_a, group_b, valid_slice, ALPHA, EFFECT_SIZE)
 
+    # Сохранение в Excel
+    df_group_a = df.iloc[group_a].copy()
+    df_group_b = df.iloc[group_b].copy()
+
+    with pd.ExcelWriter("AB_groups_output.xlsx") as writer:
+        df_group_a.to_excel(writer, sheet_name="Group_A", index=False)
+        df_group_b.to_excel(writer, sheet_name="Group_B", index=False)
+
 
 if __name__ == "__main__":
     main()
