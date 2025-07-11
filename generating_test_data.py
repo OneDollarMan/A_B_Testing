@@ -3,7 +3,7 @@ import pandas as pd
 
 # Параметры генерации
 N = 2000  # Количество магазинов
-min_sales = 5000  # Минимальная сумма продаж
+min_sales = 1000  # Минимальная сумма продаж
 max_sales = 10000  # Максимальная сумма продаж
 
 # Создаем DataFrame
@@ -15,4 +15,4 @@ data = np.random.randint(min_sales, max_sales, size=(N, 52))
 df = pd.DataFrame(data, index=stores, columns=weeks)
 df.reset_index(inplace=True)
 df.rename(columns={'index': 'Store_ID'}, inplace=True)
-df.to_excel('stores.xlsx', index=False)
+df.to_excel('static/stores.xlsx', index=False)
